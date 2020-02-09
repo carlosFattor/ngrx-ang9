@@ -3,17 +3,34 @@ import {
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer
+  MetaReducer,
+  createReducer,
+  on
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
+import { User } from '../model/user.model';
+import { AuthActions } from '../auth-types';
 
-export interface State {
-
+export interface AuthState {
+  user: User;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const initialAuthState: AuthState = {
+  user: undefined
+}
 
-};
+export const authReducer = createReducer(
+  initialAuthState,
+  on(AuthActions.login, (state, action) => {
+    return {
+      ...state,
+      user: action.user
+    };
+  }),
 
-
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+  on(AuthActions.logout, (state, action) => {
+    return {
+      user: undefined
+    };
+  })
+);

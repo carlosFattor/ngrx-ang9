@@ -1,13 +1,13 @@
 
 
 import * as express from 'express';
-import {Application} from "express";
-import {getAllCourses, getCourseByUrl} from "./get-courses.route";
-import {searchLessons} from "./search-lessons.route";
-import {loginUser} from "./auth.route";
-import {saveCourse} from "./save-course.route";
-import {createCourse} from './create-course.route';
-import {deleteCourse} from './delete-course.route';
+import { Application } from 'express';
+import { getAllCourses, getCourseByUrl } from './get-courses.route';
+import { searchLessons } from './search-lessons.route';
+import { loginUser } from './auth.route';
+import { saveCourse } from './save-course.route';
+import { createCourse } from './create-course.route';
+import { deleteCourse } from './delete-course.route';
 
 const bodyParser = require('body-parser');
 
@@ -37,7 +37,7 @@ app.route('/api/lessons').get(searchLessons);
 
 
 const httpServer = app.listen(9000, () => {
-    console.log("HTTP REST API Server running at http://localhost:" + httpServer.address().port);
+  console.log('HTTP REST API Server running at http://localhost:9000');
 });
 
 
